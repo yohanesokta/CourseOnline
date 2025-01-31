@@ -2,3 +2,7 @@
     border: none !important;
     outline: none !important;
 }
+
+button,a{
+    transition: 0.3s;
+}

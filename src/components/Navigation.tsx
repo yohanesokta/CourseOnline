@@ -62,7 +62,7 @@ export const Navigation = () => {
 
         </li>
       </ul>
-      <div className="hidden sm:flex md:w-full md:mx-0 md:mr-30 xl:w-auto h-11 xl:mx-10  pr-5  input-search rounded-md border-1 border-gray-400 focus-within:border-gray-600 ">
+      <div className="hidden sm:flex md:w-full md:mx-0 md:mr-30 xl:w-auto h-11 xl:mx-10  pr-5  input-search rounded-md border-1 border-gray-400 focus-within:border-gray-600 focus-within:border-2 ">
         <div className="h-full flex justify-center items-center px-2 text-gray-500">
           <IoSearchSharp size={18} />
         </div>
@@ -73,8 +73,8 @@ export const Navigation = () => {
         <button className="p-3 xl:hidden" onClick={OpenSide}>
           <FiAlignJustify size={24} />
         </button>
-        <button className="hidden xl:block px-5 font-normal py-2 border-gray-500 border-1 rounded-md">Masuk</button>
-        <button className="hidden xl:block px-5 font-normal py-2 text-white border-gray-600 bg-gray-600 border-1 rounded-md">Daftar</button>
+        <button className="hover:bg-slate-800 hover:border-white hover:text-white hidden xl:block px-5 font-normal py-2 border-gray-500 border-1 rounded-md">Masuk</button>
+        <button className="hover:bg-slate-800 hover:border-white hover:text-white hidden xl:block px-5 font-normal py-2 text-white border-gray-600 bg-gray-600 border-1 rounded-md">Daftar</button>
       </div>
     </nav>
 
