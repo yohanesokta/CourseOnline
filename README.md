@@ -1,5 +1,7 @@
-<h1 align="center">Course Online</h1>
+<h1 align="center">Course Online <br> PART OF <a href="https://github.com/Kurson-Project/server-side">KURSON SERVER </a> </h1>
 <p align="center">React + TypeScript + Vite</p>
+
+---
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
