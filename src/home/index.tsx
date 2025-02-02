@@ -2,6 +2,7 @@ import { Navigation } from "../components/Navigation"
 import frame_1 from "../assets/frame_1.svg"
 import frame_2 from "../assets/FrontGroup.svg"
 import { FaCheckCircle } from "react-icons/fa"
+import { Card } from "../components/Card"
 const Home = () => {
   return (
     <div>
@@ -35,6 +36,24 @@ const Home = () => {
           <p className="m-1 text-sm font-semibold flex gap-2 md:text-[12pt]"><FaCheckCircle color="green" size={20}/>100 + Online Course inside</p>
           <p className="m-1 text-sm font-semibold flex gap-2 md:text-[12pt]"><FaCheckCircle color="green" size={20}/>Online or Offline Course</p>
         </div>
+      </div>
+
+    <div className="md:flex">
+      <div className="p-4 mt-10 md:w-max md:mx-auto">
+        <div className="flex gap-2 py-5">
+          <div className="w-4 h-4 text-sm rounded-full my-auto bg-gray-600 "></div>
+          <span className="text-black xl:text-xl">Rekomendasi Kelas</span>
+          <a href="#" className=" xl:text-xl xl:px-2 underline text-blue-400 text-sm flex-1 text-right">lainya</a>
+        </div>
+      <div className="w-full overflow-x-auto flex">
+         <div className="flex gap-5">
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+          </div>
+      </div>
+      </div>
       </div>
     </div>
   )

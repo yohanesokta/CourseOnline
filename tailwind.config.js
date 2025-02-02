@@ -3,7 +3,7 @@ export default {
         extend : {
             fontFamily : {
                 poppins : ["Poppins" , "sans-serif"],
-                opensans : ["Open Sans" , "sans-serif"]
+                quicksand : ["Quicksand" , "sans-serif"]
             }
         }
     }
