@@ -2,15 +2,26 @@ import { Link } from "react-router"
 import "../app.css"
 import { IoSearchSharp } from "react-icons/io5";
 import { FiAlignJustify } from "react-icons/fi";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import { IoMdCloseCircle } from "react-icons/io";
-
+import logo from "/icon.svg"
 
 export const Navigation = () => {
   const [Open, SetOpen] = useState(false)
+  const [hasShadow, setHasShadow] = useState(false);
   function OpenSide() {
     if (Open) { SetOpen(false) } else { SetOpen(true) }
   }
+
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setHasShadow(window.scrollY > 150);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const OpenUp = () => {
     return (<>
@@ -30,6 +41,12 @@ export const Navigation = () => {
           <Link className="hover:text-black border-b-1 border-gray-300 p-1" to={"/"}>Category</Link>
           <Link className="hover:text-black border-b-1 border-gray-300 p-1" to={"/"}>About</Link>
 
+          <div className="w-full border-1 my-2 border-gray-400"></div>
+          
+          <Link className="hover:text-black  border-b-1 border-gray-300 p-1" to={"/"}>Masuk</Link>
+          <Link className="hover:text-black border-b-1 border-gray-300 p-1" to={"/"}>Daftar</Link>
+
+
           </div>
       </div>
     </>)
@@ -37,10 +54,11 @@ export const Navigation = () => {
 
 
   return (<>
-    <nav className="w-full py-10 h-13 flex z-50 bg-white  items-center fixed">
+    <nav id="navbar" className={`w-full py-10 h-13 flex z-50 bg-white  items-center  ${ hasShadow? "shadow-md fixed top-0 anim-navbar" : "relative"}`}>
 
       <div className="h-10 flex justify-center items-center mx-10">
-        <div className="bg-black w-10 h-10"></div>
+        <img src={logo} className="w-7 h-7 xl:w-8 xl:h-8" alt="" />
+        <span className="ml-2 font-semibold font-poppins">SerbaIlmu ID</span>
       </div>
 
 
@@ -80,7 +98,7 @@ export const Navigation = () => {
 
     {(Open) ? <OpenUp /> : ""}
 
-    <div className="w-full h-19"></div>
+    <div className={`w-full h-19 ${hasShadow ? "" : "hidden"}`}></div>
   </>
   )
 }

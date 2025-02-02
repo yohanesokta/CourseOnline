@@ -3,6 +3,18 @@
     outline: none !important;
 }
 
-button,a{
+button,a,nav{
     transition: 0.3s;
+}
+
+.anim-navbar{
+    animation: anim-navbar-key 0.3s ease ;
+}
+
+@keyframes anim-navbar-key {
+    from{
+        top: -76px;
+    }to{
+        top: 0;
+    }
 }
