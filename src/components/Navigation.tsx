@@ -3,7 +3,6 @@ import "../app.css"
 import { IoSearchSharp } from "react-icons/io5";
 import { FiAlignJustify } from "react-icons/fi";
 import { useState, useEffect } from "react";
-import { IoMdCloseCircle } from "react-icons/io";
 import logo from "/icon.svg"
 
 export const Navigation = () => {
