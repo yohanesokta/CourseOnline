@@ -30,7 +30,7 @@ export const Navigation = () => {
 
       <div className="h-10 flex justify-center items-center mx-10">
         <img src={logo} className="w-7 h-7 xl:w-8 xl:h-8" alt="" />
-        <span className="ml-2 font-semibold font-poppins">SerbaIlmu ID</span>
+        <span className="logo-name ml-2 font-semibold font-poppins">SerbaIlmu ID</span>
       </div>
       
 

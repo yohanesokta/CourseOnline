@@ -3,11 +3,8 @@
     outline: none !important;
 }
 
-button,a,nav{
+button,a,nav,.nav-open{
     transition: 0.3s;
-}
-.nav-open{
-    transition: .3s;
 }
 .anim-navbar{
     animation: anim-navbar-key 0.3s ease ;
@@ -18,5 +15,13 @@ button,a,nav{
         top: -76px;
     }to{
         top: 0;
+    }
+}
+
+
+
+@media only screen and (max-width:379px) {
+    .logo-name {
+        display: none;
     }
 }
