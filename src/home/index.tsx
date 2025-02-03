@@ -45,8 +45,8 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="md:flex">
-        <div className="p-4 mt-10 md:w-max md:mx-auto">
+      <div className="md:flex ">
+        <div className="p-4 mt-10 md:w-full xl:w-max md:mx-auto">
           <div className="flex gap-2 py-5">
             <div className="w-4 h-4 text-sm rounded-full my-auto bg-gray-600 "></div>
             <span className="text-black xl:text-xl">Rekomendasi Kelas</span>

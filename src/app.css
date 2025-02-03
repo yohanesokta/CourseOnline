@@ -6,7 +6,9 @@
 button,a,nav{
     transition: 0.3s;
 }
-
+.nav-open{
+    transition: .3s;
+}
 .anim-navbar{
     animation: anim-navbar-key 0.3s ease ;
 }
