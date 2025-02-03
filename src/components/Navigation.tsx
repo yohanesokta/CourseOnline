@@ -2,7 +2,7 @@ import { Link } from "react-router"
 import "../app.css"
 import { IoSearchSharp } from "react-icons/io5";
 import { FiAlignJustify } from "react-icons/fi";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import logo from "/icon.svg"
 
 export const Navigation = () => {
