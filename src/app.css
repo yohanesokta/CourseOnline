@@ -3,7 +3,7 @@
     outline: none !important;
 }
 
-button,a,nav,.nav-open{
+button,a,nav,.nav-open,.hidden-scrollbar{
     transition: 0.3s;
 }
 .anim-navbar{
@@ -24,4 +24,14 @@ button,a,nav,.nav-open{
     .logo-name {
         display: none;
     }
+}
+@media only screen and (min-width:1280px){
+    .hidden-scrollbar {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer 11 */
+      }
+      
+      .hidden-scrollbar::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Edge */
+      }
 }

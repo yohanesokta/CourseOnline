@@ -6,5 +6,6 @@ export default {
                 quicksand : ["Quicksand" , "sans-serif"]
             }
         }
-    }
+    },
+    plugins: [require("tailwind-scrollbar")],
 }
