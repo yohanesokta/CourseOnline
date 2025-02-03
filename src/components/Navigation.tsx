@@ -34,8 +34,8 @@ export const Navigation = () => {
       
 
 
-      <div className={Open ? "nav-open flex flex-col shadow-md h-0 py-0 px-10  overflow-hidden absolute w-full top-18 bg-white xl:top-0 xl:w-auto xl:shadow-none xl:p-0 xl:flex-row xl:h-11 xl:relative" : " h-[370px] nav-open flex flex-col px-10 py-10 shadow-md  overflow-hidden absolute w-full top-18 bg-white xl:top-0 xl:w-auto xl:shadow-none xl:p-0 xl:flex-row xl:h-11 xl:relative "}>
-        <ul className="order-2 flex flex-col xl:flex h-full xl:flex-row gap-5 font-medium text-gray-700 text-md  justify-center xl:items-center font-opensans " >
+      <div className={Open ? "nav-open flex flex-col shadow-md h-0 py-0 px-5  overflow-hidden absolute w-full top-18 bg-white xl:top-0 xl:w-auto xl:shadow-none xl:p-0 xl:flex-row xl:h-11 xl:relative" : " h-[290px] nav-open flex flex-col px-5 py-5 shadow-md  overflow-hidden absolute w-full top-18 bg-white xl:top-0 xl:w-auto xl:shadow-none xl:p-0 xl:flex-row xl:h-11 xl:relative "}>
+        <ul className="mt-[-20px] order-2 flex flex-col xl:flex h-full xl:flex-row gap-3 font-medium text-gray-700 text-md  justify-center xl:items-center font-opensans " >
           <li>
             <Link className="hover:text-black" to={"/"}>Home</Link>
           </li>
