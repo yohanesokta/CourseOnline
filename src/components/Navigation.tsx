@@ -26,9 +26,8 @@ export const Navigation = () => {
 
 
   return (<>
-    <nav id="navbar" className={` w-full py-10 h-13 flex z-50 bg-white  items-center  ${hasShadow ? "shadow-md fixed top-0 anim-navbar" : "relative"}`}>
-
-      <div className="h-10 flex justify-center items-center mx-10">
+    <nav id="navbar" className={` w-full  py-10 h-13 flex z-50 bg-white  items-center  ${hasShadow ? "shadow-md fixed top-0 anim-navbar" : "relative"}`}>
+      <div className="h-10 flex justify-center items-center mx-5 xl:mx-10 ">
         <img src={logo} className="w-7 h-7 xl:w-8 xl:h-8" alt="" />
         <span className="logo-name ml-2 font-semibold font-poppins">SerbaIlmu ID</span>
       </div>
@@ -63,7 +62,7 @@ export const Navigation = () => {
         </div>
       </div>
 
-      <div className=" h-full top-0 absolute right-10 flex justify-center items-center gap-4">
+      <div className=" h-full top-0 absolute right-2 xl:right-10 flex justify-center items-center gap-4">
         <button className="order-2 p-3 xl:hidden" onClick={OpenSide}>
           <FiAlignJustify size={24} />
         </button>
