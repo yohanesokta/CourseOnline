@@ -154,7 +154,7 @@ const Home = () => {
           <div className="flex justify-between">
             <p className="text-sm w-[50%] xl:text-xl">kamu punya pertanyaan lain
               tentang kami?</p>
-            <button className="px-5 scale-90 bg-black rounded-3xl text-white text-sm xl:text-[12pt] xl:scale-86 xl:px-5 xl:py-2 xl:h-12 xl:rounded-full ">Beritahu Kami!</button>
+            <button className="px-5 scale-90 h-[40px] bg-black rounded-3xl text-white text-sm xl:text-[12pt] xl:scale-86 xl:px-5 xl:py-2 xl:h-12 xl:rounded-full ">Beritahu Kami!</button>
           </div>
         </div>
 

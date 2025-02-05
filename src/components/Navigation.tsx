@@ -1,4 +1,4 @@
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 import "../app.css"
 import { IoSearchSharp } from "react-icons/io5";
 import { FiAlignJustify } from "react-icons/fi";
@@ -12,7 +12,7 @@ export const Navigation = () => {
     if (Open) { SetOpen(false) } else { SetOpen(true) }
   }
 
-
+   const navigate = useNavigate();
   useEffect(() => {
     const handleScroll = () => {
       setHasShadow(window.scrollY > 150);
@@ -50,7 +50,6 @@ export const Navigation = () => {
           </li>
           <li>
             <Link className="hover:text-black" to={"/hello"}>About</Link>
-
           </li>
         </ul>
 
@@ -66,7 +65,7 @@ export const Navigation = () => {
         <button className="order-2 p-3 xl:hidden" onClick={OpenSide}>
           <FiAlignJustify size={24} />
         </button>
-        <button className="order-1 hover:bg-slate-800 hover:border-white hover:text-white  xl:block px-5 font-normal py-2 border-gray-500 border-1 rounded-md">Masuk</button>
+        <button className="order-1 hover:bg-slate-800 hover:border-white hover:text-white  xl:block px-5 font-normal py-2 border-gray-500 border-1 rounded-md" onClick={()=>{navigate('/auth/login')}}>Masuk</button>
         <button className="hover:bg-slate-800 hover:border-white hover:text-white hidden xl:block px-5 font-normal py-2 text-white border-gray-600 bg-gray-600 border-1 rounded-md">Daftar</button>
       </div>
 
