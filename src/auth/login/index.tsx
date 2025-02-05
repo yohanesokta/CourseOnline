@@ -2,7 +2,6 @@ import { Navigation } from "../../components/Navigation"
 import GoogleIcon from "../../assets/google-icon.svg"
 import {  useState } from "react"
 import { BsEyeFill, BsEyeSlash } from "react-icons/bs"
-import { useNavigate } from "react-router"
 
 const Login = () => {
   const [TypeInput , SetTypeInput] = useState("password")
