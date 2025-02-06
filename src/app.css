@@ -36,3 +36,19 @@ button,a,nav,.nav-open,.hidden-scrollbar{
         display: none; /* Chrome, Safari, Edge */
       }
 }
+
+
+.skeleton {
+    background: linear-gradient(90deg, #d6d6d6 25%, #b0b0b0 50%, #d6d6d6 75%);
+    background-size: 200% 100%;
+    animation: loading 1s infinite linear;
+  }
+  
+  @keyframes loading {
+    0% {
+      background-position: -100% 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }

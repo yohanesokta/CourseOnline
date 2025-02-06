@@ -11,12 +11,14 @@ const Sign = () => {
   const [messageEmail, SetmessageEmail] = useState(false)
   const [messagePassword, SetmessagePassword] = useState(false)
   const [messageRePassword, SetmessageRePassword] = useState(false)
-  const [messageBroker,SetMessageBroker] = useState("")
+  const [messageBroker, SetMessageBroker] = useState("")
+  const [DisableButton, SetDisableButton] = useState(false)
 
   const username = useRef<any>()
   const email = useRef<any>()
   const password = useRef<any>()
   const repassword = useRef<any>()
+
   const navigate = useNavigate()
   const changeTypePassword = () => {
     (TypeInput == "password") ? SetTypeInput("text") : SetTypeInput("password")
@@ -31,30 +33,35 @@ const Sign = () => {
   const FormHandler = async (e: any) => {
     e.preventDefault()
     resetMessage();
-    if (String(password.current.value).length < 8) { SetmessagePassword(true) } else
-      if (password.current.value != repassword.current.value) { SetmessageRePassword(true) }
-      else {
-        try {
-          const data = await userSign({
-            username: username.current.value,
-            email: email.current.value,
-            password: password.current.value,
-            repassword: repassword.current.value
-          })
+    if (!DisableButton) {
+      if (String(password.current.value).length < 8) { SetmessagePassword(true) } else
+        if (password.current.value != repassword.current.value) { SetmessageRePassword(true) }
+        else {
+          try {
+            SetDisableButton(true)
+            const data = await userSign({
+              username: username.current.value,
+              email: email.current.value,
+              password: password.current.value,
+              repassword: repassword.current.value
+            })
 
-          if (data?.status == 200) {
-            navigate("/auth/login");
-          }
+            if (data?.status == 200) {
+              navigate("/auth/login");
+            }
 
 
-        } catch (error:any) {
-          if (error.response.data.message = "Email is already registered") {
-            SetmessageEmail(error.response.data.message)
-          } else {
-            SetMessageBroker(error.response.data.message)
+          } catch (error: any) {
+
+            SetDisableButton(false)
+            if (error.response.data.message = "Email is already registered") {
+              SetmessageEmail(error.response.data.message)
+            } else {
+              SetMessageBroker(error.response.data.message)
+            }
           }
         }
-      }
+    }
   }
 
 
@@ -85,9 +92,9 @@ const Sign = () => {
             <p className={(messageRePassword) ? "text-sm text-red-500" : "hidden"}>password tidak sama</p>
             <a href="" className="text-[9pt] text-right text-blue-400 underline">Lupa password?</a>
 
-            <button type="submit" className="py-3 bg-blue-600 text-white font-bold rounded">Daftar</button>
+            <button type="submit" className={`py-3 ${(DisableButton) ? "bg-blue-300" : "bg-blue-600"} text-white font-bold rounded`}>{(DisableButton) ? "Please Wait" : "Daftar"}</button>
             <p className={(messageBroker.length != 0) ? "text-sm text-red-500" : "hidden"} >{messageBroker}</p>
-            <a href={endpoint_api + "/auth/google?redirect=" + endpoint_app + "/auth/google"} className=" cursor-pointer border-1 border-gray-300 py-[20px] flex text-sm"><img src={GoogleIcon} className="h-[20px] px-5" alt=""  />Masuk Pakai Google</a>
+            <a href={endpoint_api + "/auth/google?redirect=" + endpoint_app + "/auth/google"} className=" cursor-pointer border-1 border-gray-300 py-[20px] flex text-sm"><img src={GoogleIcon} className="h-[20px] px-5" alt="" />Masuk Pakai Google</a>
 
           </form>
         </div>

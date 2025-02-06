@@ -1,12 +1,19 @@
-import { useSearchParams } from "react-router"
+import { useEffect } from "react"
+import { useNavigate, useSearchParams } from "react-router"
 
 export const GoogleCallback = () => {
     const [SearchParams] = useSearchParams()
+    const navigate = useNavigate()
     const token = SearchParams.get("token")
+
+    useEffect(()=>{
+        if (token) {
+            localStorage.setItem("usertoken",token!)
+            navigate("/")
+        }
+    },[])
     return (<>
-            <textarea name="" id="" className="w-[700px] h-20">
-            {token}
-        </textarea>
+           <p>Please wait</p>
     </>
     )
 }

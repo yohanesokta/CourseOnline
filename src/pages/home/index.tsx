@@ -1,12 +1,11 @@
-import { Navigation } from "../components/Navigation"
-import frame_1 from "../assets/frame_1.svg"
-import frame_2 from "../assets/FrontGroup.svg"
+import { Navigation } from "../../components/Navigation"
+import frame_1 from "../../assets/frame_1.svg"
+import frame_2 from "../../assets/FrontGroup.svg"
 import { FaCheckCircle, FaPlus } from "react-icons/fa"
-import { Card } from "../components/Card"
-import { Helmet } from "../utility/Helmet"
+import { Card } from "../../components/Card"
+import { Helmet } from "../../utility/Helmet"
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io"
 import { useRef } from "react"
-
 const Home = () => {
   const scrollRef = useRef<HTMLDivElement | null>(null)
   const scrollLeft = () => {

@@ -3,6 +3,7 @@ import course from "../assets/course.jpg"
 import { IoTime } from "react-icons/io5"
 
 export const Card = () => {
+
   return (
     <div className="w-[250px] relative h-[490px] xl:w-[280px] xl:h-[520px]  border-1 border-gray-300  rounded-2xl overflow-hidden">
         <div className="w-full h-[200px] relative">
