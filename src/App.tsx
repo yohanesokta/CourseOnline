@@ -4,6 +4,8 @@ import Login from "./auth/login"
 import Sign from "./auth/sign"
 import { GoogleCallback } from "./api/GoogleCallback"
 import { Logout } from "./auth/logout"
+import { DashboardAdmin } from "./pages/admin/Dashboard"
+import { NotFound } from "./pages/NotFound"
 
 const App = () => {
   return (
@@ -14,7 +16,8 @@ const App = () => {
         <Route path="/auth/sign" element={<Sign/>}/>
         <Route path="/auth/google" element={<GoogleCallback/>}/>
         <Route path="/auth/logout" element={<Logout/>}/>
-        <Route path="*" element={<><p>NOT FOUND</p></>}/>
+        <Route path="/admin/dashboard" element={<DashboardAdmin/>}/>
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>
   )

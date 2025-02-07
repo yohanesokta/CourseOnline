@@ -1,12 +1,14 @@
 import { Link, useNavigate } from "react-router"
 import "../app.css"
-import { IoSearchSharp } from "react-icons/io5";
+import { IoHome, IoLogOut, IoSearchSharp } from "react-icons/io5";
 import { FiAlignJustify } from "react-icons/fi";
 import { useState, useEffect } from "react";
 import logo from "/icon.svg"
 import { getuserdata } from "../api/auth.controller";
 import { useDispatch } from "react-redux";
 import { setdata } from "../utility/slice";
+import { FaUser } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
 
 export const Navigation = () => {
   const [Open, SetOpen] = useState(true)
@@ -87,7 +89,7 @@ export const Navigation = () => {
         </button>
         {(Login) ?
           <div className="relatif">
-            <button className="w-10 h-10 xl:w-13 xl:h-13 rounded-full overflow-hidden relative skeleton cursor-pointer hover:opacity-70" onClick={GoProfil}>
+            <button className="w-10 h-10 xl:w-13 xl:h-13 rounded-full overflow-hidden relative skeleton cursor-pointer" onClick={GoProfil}>
               {(Userdata) ?
               <>
               <div className="w-full h-full flex justify-center items-center bg-gray-500 text-white uppercase font-bold">{Userdata.username.split("")[0]}</div>
@@ -95,10 +97,15 @@ export const Navigation = () => {
               </>
                 : ""}
             </button>
-            <div className={(ProfileView) ? "w-40 xl:w-50  xl:gap-4 xl:p-4 xl:px-7 p-3 gap-3  bg-white border-1 border-gray-300 flex flex-col absolute top-19 right-0 rounded-l-xl rounded-b-xl shadow-md overflow-hidden" : "hidden"}>
-              <a href="">Profile</a>
-              <a href="">Setting</a>
-              <a href="/auth/logout">Logout</a>
+            <div className={(ProfileView) ? "w-50  xl:gap-4 xl:p-4 xl:px-7 p-3 px-5 gap-3  bg-white border-1 border-gray-300 flex flex-col absolute top-19 right-0 rounded-l-xl rounded-b-xl shadow-md overflow-hidden" : "hidden"}>
+              {(Userdata && Userdata.role == "admin") ?
+                  <a href="/admin/dashboard">Admin Dashboard</a>
+              : ""}
+              <a href="" className="flex gap-3" ><IoHome size={12} className="my-auto"/> Beranda</a>
+              <a href="" className="flex gap-3" ><FaUser size={12} className="my-auto"/> Profile</a>
+              <a href="" className="flex gap-3" ><IoMdSettings size={12} className="my-auto"/> Setting</a>
+              <a href="/auth/logout" className="flex gap-3" ><IoLogOut size={12} className="my-auto"/> Logout</a>
+
               <p className="text-sm text-gray-500 py-3">{(Userdata) ? Userdata.username : ""}</p>
             </div>
           </div>
