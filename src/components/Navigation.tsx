@@ -97,7 +97,7 @@ export const Navigation = () => {
               </>
                 : ""}
             </button>
-            <div className={(ProfileView) ? "w-50  xl:gap-4 xl:p-4 xl:px-7 p-3 px-5 gap-3  bg-white border-1 border-gray-300 flex flex-col absolute top-19 right-0 rounded-l-xl rounded-b-xl shadow-md overflow-hidden" : "hidden"}>
+            <div className={(ProfileView) ? " font-poppins w-50  xl:gap-4 xl:p-4 xl:px-7 p-3 px-5 gap-3  bg-white border-1 border-gray-300 flex flex-col absolute top-19 right-0 rounded-l-xl rounded-b-xl shadow-md overflow-hidden xl:w-70" : "hidden"}>
               {(Userdata && Userdata.role == "admin") ?
                   <a href="/admin/dashboard">Admin Dashboard</a>
               : ""}
