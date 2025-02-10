@@ -2,7 +2,10 @@ import {  useEffect, useState } from "react"
 import Logo from "/icon.svg"
 import { getuserdata } from "../api/auth.controller"
 import { useNavigate } from "react-router"
-import { IoArrowBack } from "react-icons/io5"
+import { IoArrowBack, IoSettings } from "react-icons/io5"
+import { BiHome, BiUser } from "react-icons/bi"
+import { BsEye } from "react-icons/bs"
+import { FaUserSlash } from "react-icons/fa"
 
 interface wrapperProps {
   childern : React.ReactNode;
@@ -26,6 +29,8 @@ export const AdminNavigation :React.FC<wrapperProps> = ({childern}) => {
         }
         SetUserData(element)
       })
+    } else {
+      navigate("/auth/login")
     }
   },[])
 
@@ -51,21 +56,20 @@ export const AdminNavigation :React.FC<wrapperProps> = ({childern}) => {
         </div>
       </div>
     </nav>
-    <section className={`fixed top-14  overflow-hidden border-r-1 shadow-md h-screen bg-white border-gray-400 ${(HideSideBar) ? "w-4 xl:w-60" : " w-60  "}`}>
+    <section className={`fixed top-14  overflow-hidden border-r-1  h-screen bg-white border-gray-400 ${(HideSideBar) ? "w-4 xl:w-60" : " w-60  "}`}>
           <button onClick={HideSideFunc} className={`cursor-pointer p-2 w-full bg-gray-100 flex justify-end xl:hidden ${(HideSideBar) ? "h-screen" : ""}`}><IoArrowBack size={18}/></button>
         <ul className="flex flex-col gap-2 font-poppins font-semibold text-gray-600 py-3 px-4">
-          <li className="cursor-pointer p-2 bg-blue-500 rounded text-white">User Mentor</li>
-          <li className="cursor-pointer p-2">Mentor Control</li>
-          <li className="cursor-pointer p-2">Content Setting</li>
-          <li className="cursor-pointer p-2">Monitor</li>
-          <li className="cursor-pointer p-2">User & Blacklist</li>
+          <li className="flex  gap-3  items-center cursor-pointer p-2 "><BiHome/>  Dashboard</li>
+          <li className="flex  gap-3 items-center cursor-pointer p-2 bg-gray-400 rounded text-white"><BiUser/> Mentor Control</li>
+          <li className="flex  gap-3 items-center cursor-pointer p-2"><IoSettings/> Content Setting</li>
+          <li className="flex  gap-3 items-center cursor-pointer p-2"><BsEye/> Monitor</li>
+          <li className="flex  gap-3 items-center cursor-pointer p-2"><FaUserSlash/> User & Blacklist</li>
 
         </ul>
     </section>
-    <div className={`w-full h-60 pt-14  xl:pl-60 ${(HideSideBar) ? "pl-4" : ""}`}>
+    <div className={`bg-gray-100 min-h-screen w-full h-60 pt-14  xl:pl-60 ${(HideSideBar) ? "pl-4" : ""}`}>
       {childern}
     </div>
     </>
-
   )
 }
