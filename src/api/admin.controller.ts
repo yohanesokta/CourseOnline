@@ -1,5 +1,5 @@
 import axios from "axios"
-import { endpoint_api , endpoint_app } from "./auth.controller"
+import { endpoint_api  } from "./auth.controller"
 
 interface mentor_add_interface {
     username : string,
