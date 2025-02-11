@@ -55,3 +55,16 @@ export const getuserdatamentor = async (id : string) =>{
         return false
     }
 }
+
+export const  delete_data_mentor = async (id :string) => {
+    try {
+        await axios.delete(endpoint_api + `/admin/mentor?mentor_id=${id}`,{
+            headers : {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+        return true
+    } catch {
+        return false
+    }
+}
