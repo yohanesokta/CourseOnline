@@ -57,11 +57,11 @@ export const AdminNavigation :React.FC<wrapperProps> = ({childern,position}) => 
         </div>
       </div>
     </nav>
-    <section className={`fixed top-14  overflow-hidden border-r-1  h-screen bg-white border-gray-400 ${(HideSideBar) ? "w-4 xl:w-60" : " w-60  "}`}>
+    <section className={`fixed top-14  overflow-hidden border-r-1 z-10  h-screen bg-white border-gray-400 ${(HideSideBar) ? "w-4 xl:w-60" : " w-60  "}`}>
           <button onClick={HideSideFunc} className={`cursor-pointer p-2 w-full bg-gray-100 flex justify-end xl:hidden ${(HideSideBar) ? "h-screen" : ""}`}><IoArrowBack size={18}/></button>
         <ul className="flex flex-col gap-2 font-poppins font-semibold text-gray-600 py-3 px-4">
-          <li className={`flex  gap-3  items-center cursor-pointer p-2 ${(position == "dashboard") ? "bg-gray-400 rounded text-white" : ""}`}><BiHome/> <a href="/admin/dashboard">Dashboard</a></li>
-          <li className={`flex  gap-3  items-center cursor-pointer p-2 ${(position == "mentor") ? "bg-gray-400 rounded text-white" : ""}`}><BiUser/><a href="/admin/dashboard/mentor">Mentor Control</a></li>
+          <li onClick={()=>{navigate("/admin/dashboard")}} className={`flex  gap-3  items-center cursor-pointer p-2 ${(position == "dashboard") ? "bg-gray-400 rounded text-white" : ""}`}><BiHome/> Dashboard</li>
+          <li onClick={()=>{navigate("/admin/dashboard/mentor")}} className={`flex  gap-3  items-center cursor-pointer p-2 ${(position == "mentor") ? "bg-gray-400 rounded text-white" : ""}`}><BiUser/>Mentor Control</li>
           <li className={`flex  gap-3  items-center cursor-pointer p-2 ${(position == "content") ? "bg-gray-400 rounded text-white" : ""}`}><IoSettings/> Content Setting</li>
           <li className={`flex  gap-3  items-center cursor-pointer p-2 ${(position == "monitor") ? "bg-gray-400 rounded text-white" : ""}`}><BsEye/> Monitor</li>
           <li className={`flex  gap-3  items-center cursor-pointer p-2 ${(position == "user") ? "bg-gray-400 rounded text-white" : ""}`}><FaUserSlash/> User & Blacklist</li>

@@ -5,6 +5,7 @@ import { CgAdd } from "react-icons/cg"
 import image from "../../assets/users-available.svg"
 import { useEffect, useRef, useState } from "react"
 import { addusermentor, getusermentor } from "../../api/admin.controller"
+import { useNavigate } from "react-router"
 
 
 const App = () => {
@@ -18,6 +19,8 @@ const App = () => {
   const addOpen = () => {
     SetViewAdd(!ViewAdd)
   }
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     getusermentor().then(e => {
@@ -74,27 +77,42 @@ const App = () => {
             </select>
           </div>
         </form>
-        <table className=" mt-10 w-full my-5 text-left text-sm xl:text-[14pt]">
-          <thead>
-            <tr >
-              <th >name</th>
-              <th>status</th>
-              <th className="hidden xl:block">email</th>
-              <th className="text-center">action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {MentorData.map((element:any) =>
-              <tr key={element.user_email}>
-                <td className="max-w-28 pt-2 xl:pt-8 pr-2"><div className="flex w-full h-full "><img src={image} className="hidden xl:block h-10 mx-4 my-2 rounderd-full" alt="image" /><p className="text-[12pt] xl:font-semibold flex items-center">{element.username}</p></div></td>
-                <td className="pt-2 xl:pt-8 " ><span className="py-1 px-2 rounded bg-green-300 text-white">active</span></td>
-                <td className="pt-2 xl:pt-8 hidden xl:block">{element.user_email}</td>
-                <td className="pt-2 text-center xl:pt-8"><button className="bg-blue-400 text-white rounded-2xl p-2 cursor-pointer active:bg-red-500"><BiPen /></button></td>
-              </tr>
-            )}
-          </tbody>
 
-        </table>
+        {(MentorData.length != 0) ? 
+        <table className=" mt-10 w-full my-5 text-left text-sm xl:text-[14pt]">
+        <thead>
+          <tr >
+            <th >name</th>
+            <th>status</th>
+            <th className="hidden xl:block">email</th>
+            <th className="text-center">action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {MentorData.map((element:any) =>
+            <tr key={element.user_email}>
+              <td className="max-w-28 pt-2 xl:pt-8 pr-2"><div className="flex w-full h-full "><img src={image} className="hidden xl:block h-10 mx-4 my-2 rounderd-full" alt="image" /><p className="text-[12pt] xl:font-semibold flex items-center">{element.username}</p></div></td>
+              <td className="pt-2 xl:pt-8 " ><span className="py-1 px-2 rounded bg-green-300 text-white">active</span></td>
+              <td className="pt-2 xl:pt-8 hidden xl:block">{element.user_email}</td>
+              <td className="pt-2 text-center xl:pt-8"><button onClick={()=>{navigate(`/admin/dashboard/mentor/${btoa(element.id)}`)}} className="bg-blue-400 text-white rounded-2xl p-2 cursor-pointer active:bg-red-500"><BiPen /></button></td>
+            </tr>
+          )}
+        </tbody>
+
+      </table>
+        :
+        <>
+        <div className="my-4 flex flex-col gap-2">
+        <div className="w-30 h-5 skeleton rounded-2xl" ></div>
+        <div className="w-50 h-5 skeleton rounded-2xl" ></div>
+        <div className="w-20 h-5 skeleton rounded-2xl" ></div>
+
+        </div>
+        </>
+        }
+        
+
+
       </div>
     </div>
   )

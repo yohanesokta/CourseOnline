@@ -40,3 +40,18 @@ export const getusermentor = async () =>{
         console.log(error)
     }
 }
+
+export const getuserdatamentor = async (id : string) =>{
+    try {
+        const data = await axios.get(endpoint_api + `/admin/mentor?mentor_id=${id}`,{
+            headers : {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+
+        return data.data.data
+    }catch(error) {
+        console.log(error)
+        return false
+    }
+}
