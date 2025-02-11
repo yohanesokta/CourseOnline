@@ -4,8 +4,9 @@ import Login from "./auth/login"
 import Sign from "./auth/sign"
 import { GoogleCallback } from "./api/GoogleCallback"
 import { Logout } from "./auth/logout"
-import { DashboardAdmin } from "./pages/admin/Dashboard"
+import { MentorControl } from "./pages/admin/MentorControl"
 import { NotFound } from "./pages/NotFound"
+import { Dashboard } from "./pages/admin/Dashboard"
 
 const App = () => {
   return (
@@ -16,7 +17,8 @@ const App = () => {
         <Route path="/auth/sign" element={<Sign/>}/>
         <Route path="/auth/google" element={<GoogleCallback/>}/>
         <Route path="/auth/logout" element={<Logout/>}/>
-        <Route path="/admin/dashboard" element={<DashboardAdmin/>}/>
+        <Route  path="/admin/dashboard" element={<Dashboard/>}/>
+        <Route path="/admin/dashboard/mentor" element={<MentorControl/>}/>
         <Route path="*" element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>
