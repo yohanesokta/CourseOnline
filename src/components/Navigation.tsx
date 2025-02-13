@@ -9,6 +9,8 @@ import { useDispatch } from "react-redux";
 import { setdata } from "../utility/slice";
 import { FaUser } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
+import { RiAdminFill } from "react-icons/ri";
+import { GiTeacher } from "react-icons/gi";
 
 export const Navigation = () => {
   const [Open, SetOpen] = useState(true)
@@ -97,9 +99,13 @@ export const Navigation = () => {
               </>
                 : ""}
             </button>
-            <div className={(ProfileView) ? " font-poppins w-50  xl:gap-4 xl:p-4 xl:px-7 p-3 px-5 gap-3  bg-white border-1 border-gray-300 flex flex-col absolute top-19 right-0 rounded-l-xl rounded-b-xl shadow-md overflow-hidden xl:w-70" : "hidden"}>
+            <div className={(ProfileView) ? " font-poppins w-70  xl:gap-4 xl:p-4 xl:px-7 p-3 px-5 gap-3  bg-white border-1 border-gray-300 flex flex-col absolute top-19 right-0 rounded-l-xl rounded-b-xl shadow-md overflow-hidden xl:w-70" : "hidden"}>
+
               {(Userdata && Userdata.role == "admin") ?
-                  <a href="/admin/dashboard">Admin Dashboard</a>
+                  <a className="py-2 px-4 gap-2 items-center rounded bg-blue-400 flex text-center justify-centerq text-white" href="/admin/dashboard">Admin Dashboard</a>
+              : ""}
+               {(Userdata && Userdata.role == "mentor") ?
+                  <a className="py-2 px-4 gap-2 items-center rounded bg-blue-400 flex text-white" href="/admin/dashboard"><GiTeacher/> Mentor Dashboard</a>
               : ""}
               <a href="" className="flex gap-3" ><IoHome size={12} className="my-auto"/> Beranda</a>
               <a href="" className="flex gap-3" ><FaUser size={12} className="my-auto"/> Profile</a>

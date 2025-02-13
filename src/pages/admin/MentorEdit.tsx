@@ -30,12 +30,12 @@ const App = () => {
 
   return <div className="p-3 flex flex-col font-poppins md:max-w-md md:p-5">
     {(MentorData) ? <>
-      <div className=" xl:bg-white xl:w-md xl:p-4 xl:my-2 xl:rounded-md xl:shadow-md">
+      <div className=" bg-white xl:w-md p-4 xl:my-2 rounded-md shadow-md">
         <h1 className="font-semibold xl:text-2xl">Profile Mentor</h1>
         <p className="py-2 text-sm text-gray-600 xl:text-[12pt]">Kelola profile mentor anda dengan hak akses admin. Peringatan ini dapat menggati informasi sekaligus hal hal yang sudah di tetapkan sebelumnya</p>
       </div>
 
-      <div className="relative xl:bg-white xl:py-4 xl:rounded-2xl xl:w-md xl:shadow-md xl:flex xl:flex-col xl:items-center">
+      <div className="relative mt-4 bg-white py-4 rounded-2xl xl:w-md shadow-md flex flex-col items-center">
         <h1 className="font-semibold my-2 xl:text-xl">Info Dasar</h1>
         <div className="w-20 h-auto relative  xl:w-30" >
           <img className="my-2" src={img} alt="foto profile" />
@@ -46,7 +46,7 @@ const App = () => {
        
 
         <div className="mt-2 xl:mt-4">
-          <h3 className="font-semibold xl:text-center xl:text-[14pt]">Nama</h3>
+          <h3 className="font-semibold text-center xl:text-[14pt]">Nama</h3>
           <h1 className="">{MentorData.username!} <button className="bg-blue-400 text-white p-1 rounded-md"><BiEdit /></button></h1>
         </div>
 
