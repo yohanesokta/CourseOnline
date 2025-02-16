@@ -9,7 +9,6 @@ import { useDispatch } from "react-redux";
 import { setdata } from "../utility/slice";
 import { FaUser } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
-import { RiAdminFill } from "react-icons/ri";
 import { GiTeacher } from "react-icons/gi";
 
 export const Navigation = () => {
@@ -95,7 +94,7 @@ export const Navigation = () => {
               {(Userdata) ?
               <>
               <div className="w-full h-full flex justify-center items-center bg-gray-500 text-white uppercase font-bold">{Userdata.username.split("")[0]}</div>
-              <div className="w-full h-full absolute top-0" style={{ backgroundImage: `url(${Userdata.profile_picture_url})`, backgroundSize: "cover" }}></div>
+              <img src={Userdata.profile_picture_url} className="w-full h-full object-cover absolute top-0" ></img>
               </>
                 : ""}
             </button>

@@ -5,10 +5,15 @@ import { delete_data_mentor, getuserdatamentor } from "../../api/admin.controlle
 import img from "../../assets/users-available.svg"
 import { BiEdit } from "react-icons/bi"
 import { Modal } from "../../components/Modal"
+import { supabase_get_bucket } from "../../api/supabase.controller"
+import imageCompression from "browser-image-compression"
 const App = () => {
   const param = useParams()
   const [MentorData, SetMentorData] = useState<any>()
   const [DeleteModal,SetDeleteModal] = useState(false)
+  const [isLoadImage,SetLoadImage] = useState<boolean>(false)
+
+  const [ImageUpdates,SetImageUpdates] = useState("");
   const userid = atob(param.mentor_id!)
   const navigate = useNavigate()
 
@@ -28,6 +33,20 @@ const App = () => {
       })
   }
 
+  function ImageUpdate (event:any) {
+    const SelectedImage = event.target.files[0]
+    if (SelectedImage && MentorData) {
+      SetLoadImage(true)
+      const option = { maxSizeKB: 100, maxWidthOrHeight: 128, useWebWorker: true };
+      imageCompression(SelectedImage,option).then( async (images)=>{
+        SetImageUpdates(URL.createObjectURL(images))
+        await supabase_get_bucket(images,MentorData.id)
+        SetLoadImage(false)
+      })
+    }
+  }
+
+
   return <div className="p-3 flex flex-col font-poppins md:max-w-md md:p-5">
     {(MentorData) ? <>
       <div className=" bg-white xl:w-md p-4 xl:my-2 rounded-md shadow-md">
@@ -38,10 +57,11 @@ const App = () => {
       <div className="relative mt-4 bg-white py-4 rounded-2xl xl:w-md shadow-md flex flex-col items-center">
         <h1 className="font-semibold my-2 xl:text-xl">Info Dasar</h1>
         <div className="w-20 h-auto relative  xl:w-30" >
-          <img className="my-2" src={img} alt="foto profile" />
-          <button className="bg-[rgba(0,0,0,.3)] flex w-full h-10 xl:h-15  absolute top-10 xl:top-17 rounded-b-full"><BiEdit className="m-auto" size={24} color="white" /></button>
-          <button className="px-3 py-1 bg-blue-400 text-white text-sm rounded-md mx-2 xl:text-[12pt] xl:mx-6">Ganti</button>
+          
+          <img className={`my- w-full h-20 xl:h-30 rounded-full object-cover ${(isLoadImage) ? "animate-pulse" : ""}`} src={(ImageUpdates) ? ImageUpdates : (MentorData.profile_picture_url) ? MentorData.profile_picture_url : img} alt="foto profile" />
+          <label htmlFor="img" className="bg-[rgba(0,0,0,.3)] cursor-pointer flex w-full h-10 xl:h-15  absolute top-10 xl:top-15 rounded-b-full"><BiEdit className="m-auto" size={24} color="white" /></label>
         </div>
+        <input onInput={ImageUpdate} type="file" id="img" className="hidden" />
 
        
 
