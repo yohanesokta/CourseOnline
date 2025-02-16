@@ -9,7 +9,6 @@ import { useDispatch } from "react-redux";
 import { setdata } from "../utility/slice";
 import { FaUser } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
-import { RiAdminFill } from "react-icons/ri";
 import { GiTeacher } from "react-icons/gi";
 
 export const Navigation = () => {
