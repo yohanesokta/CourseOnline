@@ -1,7 +1,7 @@
 import {  useEffect, useState } from "react"
 import Logo from "/icon.svg"
 import { getuserdata } from "../api/auth.controller"
-import { useNavigate } from "react-router"
+import { useNavigate } from "react-router" 
 import {  IoSettings } from "react-icons/io5"
 import { BiHome, BiLogOut, BiMenu, BiUser } from "react-icons/bi"
 import { BsEye } from "react-icons/bs"
@@ -72,10 +72,10 @@ export const AdminNavigation :React.FC<wrapperProps> = ({childern,position}) => 
         <a href="/auth/logout" className="flex gap-2 items-center"><BiLogOut/> Logout</a>
       </div>
     </nav>
-    <section className={`fixed top-14  overflow-hidden border-r-1 z-10  h-screen bg-white border-gray-400 ${(HideSideBar) ? "w-0 xl:w-60" : " w-60  "}`}>
-        <ul className="flex flex-col gap-2 font-poppins font-semibold text-gray-600 py-3 px-4">
-          <li onClick={()=>{navigate("/admin/dashboard")}} className={`flex  gap-3  items-center cursor-pointer p-2 ${(position == "dashboard") ? "bg-blue-500 rounded text-white" : ""}`}><BiHome/> Dashboard</li>
-          <li onClick={()=>{navigate("/admin/dashboard/mentor")}} className={`flex  gap-3  items-center cursor-pointer p-2 ${(position == "mentor") ? "bg-blue-500 rounded text-white" : ""}`}><BiUser/>Mentor Control</li>
+    <section className={`fixed top-14  overflow-hidden border-r-1 z-10 pr-5 h-screen bg-white border-gray-400 ${(HideSideBar) ? "w-0 xl:w-max" : " w-max  "}`}>
+        <ul className="flex flex-col gap-2 font-poppins font-semibold text-gray-500 py-3 px-4">
+          <li onClick={()=>{navigate("/admin/dashboard")}} className={`flex  gap-3  items-center cursor-pointer p-2 ${(position == "dashboard") ? "border-b-blue-500 border-b-2 text-blue-500 font-bold" : ""}`}><BiHome/> Dashboard</li>
+          <li onClick={()=>{navigate("/admin/dashboard/mentor")}} className={`flex  gap-3  items-center cursor-pointer p-2 ${(position == "mentor") ? "border-b-blue-500 border-b-2 text-blue-500 font-bold" : ""}`}><BiUser/>Mentor Control</li>
           <li className={`flex  gap-3  items-center cursor-pointer p-2 ${(position == "content") ? "bg-gray-400 rounded text-white" : ""}`}><IoSettings/> Content Setting</li>
           <li className={`flex  gap-3  items-center cursor-pointer p-2 ${(position == "monitor") ? "bg-gray-400 rounded text-white" : ""}`}><BsEye/> Monitor</li>
           <li className={`flex  gap-3  items-center cursor-pointer p-2 ${(position == "user") ? "bg-gray-400 rounded text-white" : ""}`}><FaUserSlash/> User & Blacklist</li>

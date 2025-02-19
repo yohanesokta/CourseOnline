@@ -1,15 +1,15 @@
 import { Link, useNavigate } from "react-router"
 import "../app.css"
-import { IoHome, IoLogOut, IoSearchSharp } from "react-icons/io5";
-import { FiAlignJustify } from "react-icons/fi";
+import {  IoSearchSharp } from "react-icons/io5";
+import { FiAlignJustify, FiSettings } from "react-icons/fi";
 import { useState, useEffect } from "react";
 import logo from "/icon.svg"
 import { getuserdata } from "../api/auth.controller";
 import { useDispatch } from "react-redux";
 import { setdata } from "../utility/slice";
-import { FaUser } from "react-icons/fa";
-import { IoMdSettings } from "react-icons/io";
 import { GiTeacher } from "react-icons/gi";
+import { BiHome, BiLogOut, BiUser } from "react-icons/bi";
+import { CgArrowsExchangeAlt } from "react-icons/cg";
 
 export const Navigation = () => {
   const [Open, SetOpen] = useState(true)
@@ -92,26 +92,29 @@ export const Navigation = () => {
           <div className="relatif">
             <button className="w-10 h-10 xl:w-13 xl:h-13 rounded-full overflow-hidden relative skeleton cursor-pointer" onClick={GoProfil}>
               {(Userdata) ?
-              <>
-              <div className="w-full h-full flex justify-center items-center bg-gray-500 text-white uppercase font-bold">{Userdata.username.split("")[0]}</div>
-              <img src={Userdata.profile_picture_url} className="w-full h-full object-cover absolute top-0" ></img>
-              </>
+                <>
+                  <div className="w-full h-full flex justify-center items-center bg-gray-500 text-white uppercase font-bold">{Userdata.username.split("")[0]}</div>
+                  {(Userdata.profile_picture_url) ? <div  className="w-full h-full object-cover absolute top-0" style={{ backgroundImage: `url(${Userdata.profile_picture_url})`, backgroundSize: "cover" }} ></div>
+                    : ""
+                  }
+                </>
                 : ""}
             </button>
-            <div className={(ProfileView) ? " font-poppins w-70  xl:gap-4 xl:p-4 xl:px-7 p-3 px-5 gap-3  bg-white border-1 border-gray-300 flex flex-col absolute top-19 right-0 rounded-l-xl rounded-b-xl shadow-md overflow-hidden xl:w-70" : "hidden"}>
+            <div className={(ProfileView) ? " font-poppins w-max xl:gap-4 xl:p-4 xl:px-7 p-3 px-5 gap-3  bg-white border-1 border-gray-300 flex flex-col absolute top-19 right-0 rounded-2xl shadow-2xl overflow-hidden" : "hidden"}>
 
               {(Userdata && Userdata.role == "admin") ?
-                  <a className="py-2 px-4 gap-2 items-center rounded bg-blue-400 flex text-center justify-centerq text-white" href="/admin/dashboard">Admin Dashboard</a>
-              : ""}
-               {(Userdata && Userdata.role == "mentor") ?
-                  <a className="py-2 px-4 gap-2 items-center rounded bg-blue-400 flex text-white" href="/admin/dashboard"><GiTeacher/> Mentor Dashboard</a>
-              : ""}
-              <a href="" className="flex gap-3" ><IoHome size={12} className="my-auto"/> Beranda</a>
-              <a href="" className="flex gap-3" ><FaUser size={12} className="my-auto"/> Profile</a>
-              <a href="" className="flex gap-3" ><IoMdSettings size={12} className="my-auto"/> Setting</a>
-              <a href="/auth/logout" className="flex gap-3" ><IoLogOut size={12} className="my-auto"/> Logout</a>
+                // <a className="py-2 px-4 gap-2 items-center rounded flex text-center justify-centerq " href="/admin/dashboard">Admin Dashboard</a>
+              <a href="/admin/dashboard" className="flex gap-1 mt-2 text-red-900" ><CgArrowsExchangeAlt size={23} className="my-auto" /> Admin Dashboard</a>
 
-              <p className="text-sm text-gray-500 py-3">{(Userdata) ? Userdata.username : ""}</p>
+                : ""}
+              {(Userdata && Userdata.role == "mentor") ?
+                <a className="py-2 px-4 gap-2 items-center rounded bg-blue-400 flex text-white" href="/admin/dashboard"><GiTeacher /> Mentor Dashboard</a>
+                : ""}
+              <a href="" className="flex gap-3" ><BiHome size={14} className="my-auto" />Semua Kelas</a>
+              <a href="" className="flex gap-3" ><BiUser size={14} className="my-auto" /> Profile</a>
+              <a href="" className="flex gap-3" ><FiSettings size={14} className="my-auto" /> Setting</a>
+              <a href="/auth/logout" className="flex gap-3 mb-4" ><BiLogOut size={14} className="my-auto" /> Logout</a>
+
             </div>
           </div>
           :

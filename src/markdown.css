@@ -1,0 +1,28 @@
+.markdown * {
+    all: unset;
+    display: revert;
+    font-size: revert;
+    font-weight: revert;
+    color: revert;
+    background: revert;
+    margin: revert;
+    padding: revert;
+    border: revert;
+    outline: revert;
+    box-shadow: revert;
+    text-align: revert;
+    text-decoration: revert;
+    list-style: revert;
+  }
+  .markdown h1{
+    font-size: 32pt;
+  }
+  .markdown h2 {
+    font-size: 28pt;
+  }
+  .markdown h3 {
+    font-size: 24pt;
+  }
+  .markdown p , .markdown span{
+    font-size: 14pt;
+  }  

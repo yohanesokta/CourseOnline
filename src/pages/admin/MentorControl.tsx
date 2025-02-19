@@ -64,7 +64,7 @@ const App = () => {
 
         <button onClick={addMentor} className={`${(ButtonAdd == "Tambah") ? "bg-blue-400" : "bg-blue-200"} text-white text-center flex items-center justify-center gap-2 p-2 rounded`}> {ButtonAdd}</button>
       </div> : ""}
-      <div className="w-full rounded-2xl my-5 p-5  bg-white">
+      <div className="w-full rounded-2xl my-5 p-5  bg-white xl:w-[1000px]">
         <form action="" className="w-max flex gap-2 ">
           <input name="s" type="text" className="w-35 xl:w-max font-sm py-2 px-2 border-b-[1.5px] outline-0 focus:border-b-2  bg-white border-gray-400" placeholder="serach" />
           <div className="flex my-auto gap-3 items-center w-max">
