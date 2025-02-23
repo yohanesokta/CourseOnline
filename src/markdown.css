@@ -14,6 +14,10 @@
     text-decoration: revert;
     list-style: revert;
   }
+  .markdown em{
+    font-style: italic;
+    opacity: .7;
+  }
   .markdown h1{
     font-size: 32pt;
   }
@@ -23,6 +27,10 @@
   .markdown h3 {
     font-size: 24pt;
   }
-  .markdown p , .markdown span{
+  .markdown p , .markdown span , .markdown ul , .markdown ul li{
     font-size: 14pt;
-  }  
+  }
+
+  .markdown a{
+    font-weight: normal;
+  }
