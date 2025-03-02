@@ -6,6 +6,7 @@ import image from "../../assets/users-available.svg"
 import { useEffect, useRef, useState } from "react"
 import { addusermentor, getusermentor } from "../../api/admin.controller"
 import { useNavigate } from "react-router"
+import { admin_config } from "../../utility/NavigationConfig"
 
 
 const App = () => {
@@ -122,7 +123,7 @@ const App = () => {
 export const MentorControl = () => {
   return (
     <>
-      <AdminNavigation childern={<App />} position="mentor" />
+      <AdminNavigation childern={<App />} position="Mentor Control" config={admin_config} />
     </>
   )
 }

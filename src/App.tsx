@@ -10,6 +10,8 @@ import { Dashboard } from "./pages/admin/Dashboard"
 import { MentorEdit } from "./pages/admin/MentorEdit"
 import { CreateProduct } from "./pages/mentor/CreateProduct"
 import { ProductCustom } from "./pages/mentor/ProductCustom"
+import { MentorDashboard } from "./pages/mentor/MentorDashboard"
+import { Product } from "./pages/mentor/product/Product"
 
 const App = () => {
   return (
@@ -26,6 +28,9 @@ const App = () => {
 
         <Route path="/mentor/product" element={<CreateProduct/>}/>
         <Route path="/mentor/product/edit" element={<ProductCustom/>} />
+        <Route path="/mentor/dashboard"  element={<MentorDashboard/>}/>
+        <Route path="/mentor/dashboard/product"  element={<Product/>}/>
+        
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

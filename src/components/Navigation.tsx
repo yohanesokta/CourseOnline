@@ -108,7 +108,7 @@ export const Navigation = () => {
 
                 : ""}
               {(Userdata && Userdata.role == "mentor") ?
-                <a className="py-2 px-4 gap-2 items-center rounded bg-blue-400 flex text-white" href="/admin/dashboard"><GiTeacher /> Mentor Dashboard</a>
+                <a className="py-2 px-4 gap-2 items-center rounded bg-blue-400 flex text-white" href="/mentor/dashboard"><GiTeacher /> Mentor Dashboard</a>
                 : ""}
               <a href="" className="flex gap-3" ><BiHome size={14} className="my-auto" />Semua Kelas</a>
               <a href="" className="flex gap-3" ><BiUser size={14} className="my-auto" /> Profile</a>

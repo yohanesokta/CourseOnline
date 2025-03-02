@@ -15,6 +15,7 @@ export class EditorAction {
     
     
     tab (element:any) {
+        element.focus()
         if (this.config.set_text) {
             const {selectionStart , selectionEnd} = element!
             this.config.set_text(
@@ -29,14 +30,14 @@ export class EditorAction {
         }
     }
 
-    bold (element : any) {
+    splitchar (element : any, char : string) {
         console.log(element)
         const {selectionStart , selectionEnd} = element
         if (selectionStart != selectionEnd) {
             const selectionString = String(this.config.text).substring(selectionStart,selectionEnd)
             const newText = 
                 this.config.text.substring(0,selectionStart) + 
-                `**${selectionString}**` + 
+                char + selectionString + char + 
                 this.config.text.substring(selectionEnd)
 
             this.config.set_text!(newText)
@@ -53,12 +54,17 @@ export class EditorAction {
         }
 
         if (event.key == "b" && event.ctrlKey) {
-            this.bold(event.target)
+            this.splitchar(event.target,"**")
         }
 
         if (event.key == "z" && event.ctrlKey) {
-            console.log(this.config.history)
-            this.config.set_main_text!(this.config.history[-1])
+            this.config.set_main_text!(this.config.history.pop() || "")
+        }
+        if (event.key == "i" && event.ctrlKey) {
+            this.splitchar(event.target,"*")
+        }
+        if (event.key == "s" && event.ctrlKey) {
+            event.preventDefault(   )
         }
     }
 }

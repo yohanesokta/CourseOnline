@@ -2,18 +2,17 @@ import {  useEffect, useState } from "react"
 import Logo from "/icon.svg"
 import { getuserdata } from "../api/auth.controller"
 import { useNavigate } from "react-router" 
-import {  IoSettings } from "react-icons/io5"
 import { BiHome, BiLogOut, BiMenu, BiUser } from "react-icons/bi"
-import { BsEye } from "react-icons/bs"
-import { FaUserSlash } from "react-icons/fa"
 import { FiSettings } from "react-icons/fi"
+import { Config } from "../utility/NavigationConfig"
 
 interface wrapperProps {
   childern : React.ReactNode;
-  position : string
+  position : string,
+  config : Config
 }
 
-export const AdminNavigation :React.FC<wrapperProps> = ({childern,position}) => {
+export const AdminNavigation :React.FC<wrapperProps> = ({childern,position,config}) => {
   const [ProfileView , SetProfileView] = useState(false)
   const [Userdata, SetUserData] = useState<any>()
   const token = localStorage.getItem("usertoken")
@@ -30,7 +29,7 @@ export const AdminNavigation :React.FC<wrapperProps> = ({childern,position}) => 
   useEffect(() => {
     if (token) {
       getuserdata(token).then((element) => {
-        if (element.role != "admin") {
+        if (element.role != config.role) {
           navigate("/")
         }
         SetUserData(element)
@@ -42,7 +41,7 @@ export const AdminNavigation :React.FC<wrapperProps> = ({childern,position}) => 
 
   return (
     <>
-    <nav className="h-14 w-full shadow-md border-gray-400 p-3 bg-white flex fixed">
+    <nav className="h-14 w-full shadow-2xl p-3 bg-white flex fixed z-10">
       <button className="xl:hidden" onClick={HideSideFunc}>
         <BiMenu size={24}/>
       </button>
@@ -50,14 +49,14 @@ export const AdminNavigation :React.FC<wrapperProps> = ({childern,position}) => 
         <img src={Logo} className="h-[80%]" alt="logo" />
         <a href="/" className="font-poppins font-semibold">SerbaIlmu ID</a>
       </div>
-      <div className="w-14 h-full absolute top-0 right-10">
-        <div className="w-full h-full skeleton rounded-full scale-75 overflow-hidden cursor-pointer relative" onClick={ProfileAction}>
+      <div className="w-14 h-full flex items-center absolute top-0 right-10">
+        <div className="w-[85%] h-[85%] skeleton rounded-full overflow-hidden cursor-pointer relative" onClick={ProfileAction}>
           {(Userdata) ? <>
             <div className="uppercase font-bold font-poppins flex w-full h-full justify-center items-center bg-gray-600 text-white">
               {Userdata.username.split("")[0]}
             </div>
 
-            <div className="w-full h-full  absolute top-0" style={{ backgroundImage: `url(${Userdata.profile_picture_url})`, backgroundSize: "cover" }}>
+            <div className="w-full h-full absolute top-0" style={{ backgroundImage: `url(${Userdata.profile_picture_url})`, backgroundSize: "cover" }}>
 
             </div>
           </>
@@ -72,16 +71,14 @@ export const AdminNavigation :React.FC<wrapperProps> = ({childern,position}) => 
         <a href="/auth/logout" className="flex gap-2 items-center"><BiLogOut/> Logout</a>
       </div>
     </nav>
-    <section className={`fixed top-14  overflow-hidden border-r-1 z-10 pr-5 h-screen bg-white border-gray-400 ${(HideSideBar) ? "w-0 xl:w-max" : " w-max  "}`}>
-        <ul className="flex flex-col gap-2 font-poppins font-semibold text-gray-500 py-3 px-4">
-          <li onClick={()=>{navigate("/admin/dashboard")}} className={`flex  gap-3  items-center cursor-pointer p-2 ${(position == "dashboard") ? "border-b-blue-500 border-b-2 text-blue-500 font-bold" : ""}`}><BiHome/> Dashboard</li>
-          <li onClick={()=>{navigate("/admin/dashboard/mentor")}} className={`flex  gap-3  items-center cursor-pointer p-2 ${(position == "mentor") ? "border-b-blue-500 border-b-2 text-blue-500 font-bold" : ""}`}><BiUser/>Mentor Control</li>
-          <li className={`flex  gap-3  items-center cursor-pointer p-2 ${(position == "content") ? "bg-gray-400 rounded text-white" : ""}`}><IoSettings/> Content Setting</li>
-          <li className={`flex  gap-3  items-center cursor-pointer p-2 ${(position == "monitor") ? "bg-gray-400 rounded text-white" : ""}`}><BsEye/> Monitor</li>
-          <li className={`flex  gap-3  items-center cursor-pointer p-2 ${(position == "user") ? "bg-gray-400 rounded text-white" : ""}`}><FaUserSlash/> User & Blacklist</li>
+    <section className={`fixed top-14 overflow-hidden font-poppins min-w-60 z-10 pr-5 h-screen bg-white shadow-2xl ${(HideSideBar) ? "w-0 xl:w-max" : " w-max  "}`}>
+        <ul className="flex flex-col gap-3 font-poppins font-semibold text-gray-500 py-3 px-4">
+         {(config.option.map((element) => {
+            return  <li onClick={()=>{navigate(element.url)}} className={`flex  gap-3 font-[400]  items-center cursor-pointer p-2 ${(position == element.title) ? "border-b-blue-500  text-blue-500  font-[500] " : ""}`}><element.iconElement/> {element.title}</li>
+         }))}
         </ul>
     </section>
-    <div className={`bg-gray-100 min-h-screen w-full h-60 pt-14  xl:pl-60`}>
+    <div className={`bg-gray-200  min-h-screen w-full h-60 pt-14  xl:pl-60`}>
       {childern}
     </div>
     </>

@@ -7,6 +7,7 @@ import { BiEdit } from "react-icons/bi"
 import { Modal } from "../../components/Modal"
 import { supabase_get_bucket } from "../../api/supabase.controller"
 import imageCompression from "browser-image-compression"
+import { admin_config } from "../../utility/NavigationConfig"
 const App = () => {
   const param = useParams()
   const [MentorData, SetMentorData] = useState<any>()
@@ -93,6 +94,6 @@ const App = () => {
 
 export const MentorEdit = () => {
   return (
-    <AdminNavigation childern={<App />} position="mentor" />
+    <AdminNavigation childern={<App />} position="Mentor Control" config={admin_config} />
   )
 }

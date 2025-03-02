@@ -1,4 +1,5 @@
 import { AdminNavigation } from "../../components/AdminNavigation"
+import { admin_config } from "../../utility/NavigationConfig"
 
 const App = () => {
     return <>
@@ -9,6 +10,6 @@ const App = () => {
 
 export const Dashboard = () => {
   return (
-    <AdminNavigation childern={<App/>} position="dashboard"/>
+    <AdminNavigation childern={<App/>} position="Dashboard" config={admin_config}/>
   )
 }
