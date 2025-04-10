@@ -1,5 +1,5 @@
 export interface Category {
-    id: string | number;
+    id: string;
     name: string;
     slug: string;
     thumbnail?: string | null;
