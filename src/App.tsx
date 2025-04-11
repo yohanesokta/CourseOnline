@@ -12,6 +12,7 @@ import { CreateProduct } from "./pages/mentor/CreateProduct"
 import { ProductCustom } from "./pages/mentor/ProductCustom"
 import { MentorDashboard } from "./pages/mentor/MentorDashboard"
 import { Product } from "./pages/mentor/product/Product"
+import { AddProduct } from "./pages/mentor/product/AddProduct"
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/mentor/product/edit" element={<ProductCustom/>} />
         <Route path="/mentor/dashboard"  element={<MentorDashboard/>}/>
         <Route path="/mentor/dashboard/product"  element={<Product/>}/>
+        <Route path="/mentor/dashboard/product/add" element={<AddProduct  />} />
         
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -2,12 +2,22 @@ import { useEffect, useRef, useState } from "react"
 import { FaCirclePlus } from "react-icons/fa6"
 import { Category } from "../../../utility/ineterfaceModule"
 import { addCategoryClass, addClass, findMentorCategory } from "../../../api/mentor.controller"
+import { AdminNavigation } from "../../../components/AdminNavigation"
+import { mentor_config } from "../../../utility/NavigationConfig"
 
-export const AddProduct = ({OnAdd} : {OnAdd : (params : boolean) => void}) => {
+const AddProductComponents = () => {
     const [ShowOption,SetShowOption] = useState<boolean>(false)
     const [Option, SetOption] = useState<{id : number , text : string}>({id : 0 , text : ""})
     const [DisplayAddCategory,SetDisplayAddCategory] = useState<boolean>(false)
     const [DataCategory,SetDataCategory] = useState<Array <Category> | undefined>([])
+    const [ErrorMessage,SetErrorMessage] = useState<string>("")
+
+    const handleError = (message: string) => {
+        SetErrorMessage(message);
+        setTimeout(() => {
+            SetErrorMessage("");
+        }, 5000);
+    }
 
     // Building Refence
     const inputRef = useRef<any>({})
@@ -17,7 +27,9 @@ export const AddProduct = ({OnAdd} : {OnAdd : (params : boolean) => void}) => {
         if (data) {
               SetDataCategory(data)
           }
-      })
+      }).catch((error) => {
+          handleError("Failed to fetch categories.");
+      });
     }
 
     useEffect(()=> {
@@ -42,9 +54,9 @@ export const AddProduct = ({OnAdd} : {OnAdd : (params : boolean) => void}) => {
         price: parseFloat(productPrice),
         duration: Time
       }).then(event => {
-        event.status ? OnAdd(true) : console.log(event.message);
+        event.status ? window.location.href = "/mentor/dashboard/product/" : handleError(event.message); 
       }).catch(() => {
-        console.log("An unexpected error occurred.");
+        handleError("An unexpected error occurred.");
       });
 
     }
@@ -97,7 +109,7 @@ export const AddProduct = ({OnAdd} : {OnAdd : (params : boolean) => void}) => {
     }
 
     return (
-      <div className="w-full h-full bg-gray-200 flex z-0 fixed top-14 mx-4 py-5">
+      <div className="w-full h-full overflow-scroll bg-gray-200 flex z-0 fixed top-14 mx-4 py-5">
         <form onSubmit={SubmitHandlingAddProduct} action="" className="p-5 bg-white flex flex-col gap-4 rounded-xl h-max w-max-xl w-xl">
           <h1 className="font-bold">Tambah Kelas</h1>
           <p className="text-red-300">*Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor ducimus est aliquam quas in eos, natus atque quasi aperiam quidem.</p>
@@ -132,12 +144,18 @@ export const AddProduct = ({OnAdd} : {OnAdd : (params : boolean) => void}) => {
             <input type="number" placeholder="Menit" className="w-19 p-2 border-1 border-gray-500 rounded" />
             <input type="number" placeholder="Detik" className="w-15 p-2 border-1 border-gray-500 rounded" />
           </div>
-
+          <p className="text-red-500">{ErrorMessage}</p>
           <button type="submit" className="w-full p-2 bg-blue-400 font-semibold text-white rounded">Save</button>
-          <button type="button" onClick={() => { OnAdd(false) }} className="w-full p-2 bg-red-500 font-semibold text-white rounded">Cancel</button>
+          <button onClick={()=>{window.location.href = "/mentor/dashboard/product/"}} type="button" className="w-full p-2 bg-red-500 font-semibold text-white rounded">Cancel</button>
         </form>
           {(DisplayAddCategory) ? <AddCategory/> : "" }
       </div>
 
     )
   }
+
+export function AddProduct(){
+  return (
+    <AdminNavigation childern={<AddProductComponents />} config={mentor_config} position="Product"/>
+  )
+}

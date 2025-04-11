@@ -64,3 +64,18 @@ export async function addClass(data: Class) {
         };
     }
 }
+
+export async function getClass() {
+    
+    try {
+        const { data } = await axios.get(endpoint_api + "/mentor/class", {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        });
+        return data.data;
+    } catch (error) {
+        console.log(error);
+        return [];
+    }
+}
